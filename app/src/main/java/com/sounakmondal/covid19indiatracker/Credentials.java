@@ -1,22 +1,38 @@
 package com.sounakmondal.covid19indiatracker;
 
-public class creds {
+public class Credentials {
 
-    /**
-
+     /**
      URL Format = baseURL+ Extension URL + FinalExtension
-
      **/
 
-
+    //---BaseURL and FinalExtension---
     String baseURL ="https://api.covid19india.org/";
     String finalExtension = ".json";
+    //--------------------------------
+
+
+    //---Extension URLs---
     String rawDataExtension = "raw_data";
     String nationalLevelExtension = "data";
+    //---------------------
 
+
+    //---State Level Data---
+    String stateDistrictWiseExtension =  "state_district_wise";
+    String stateDailyChangeExtension = "states_daily";
+    String stateTestingDataExtension = "state_test_data";
+    //----------------------
+
+
+    //---National Level Data---
+    String latestDataExtension = "data";
+    String specificDateExtension = "data-"; //Add "YYYY-MM-DD" after this
+    String populationExtension = "misc";
+    //-------------------------
 
 }
-    /*---Documentation of API from Owners Github Repo--
+    /*---Documentation of API from Owners Github Repo---
 
     ----Raw Data----
      💚	Patient Level : Raw Data Partition 1 (Till Apr 19)	            https://api.covid19india.org/raw_data1.json
@@ -53,6 +69,4 @@ public class creds {
      💚	National/State Level: Timeseries_(different structure)_	                        https://api.covid19india.org/v4/timeseries.json
      💚	State & District Level: Population	                                            https://api.covid19india.org/misc.json
      ---------------
-
-
      */
