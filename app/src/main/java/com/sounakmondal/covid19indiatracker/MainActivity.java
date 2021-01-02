@@ -6,7 +6,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        testURL = new mURLBuilder().getRawData(2);
+
 
     /*
         //---TEST TO CHECK IF URL IS BUILD CORRECTLY---
@@ -74,17 +85,47 @@ public class MainActivity extends AppCompatActivity {
     {
         @Override
         protected String doInBackground(String... strings) {
+
+            String current = ""; //JSON in String form
+            URL url = null;
             try {
-                URL url;
+                url = new URL(testURL);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            HttpsURLConnection urlConnection = null;
+            try {
 
+                urlConnection = (HttpsURLConnection) url.openConnection();
+                InputStream is = urlConnection.getInputStream();
+                InputStreamReader isr = new InputStreamReader(is);
 
+                int data = isr.read();//get to first character
+                while(data!=-1)//till end is not reached
+                {
+                    current += (char) data;
+                    data = isr.read();
+                }
             }catch (Exception e){e.printStackTrace();}
+            finally {
+                try{
+                if(urlConnection!=null)
+                {
+                    urlConnection.disconnect(); //Disconnect HTTPS Connection after retrieval of data
+                }}catch (Exception e){e.printStackTrace();}
+            }
 
-            return null;
+            return current;
         }
 
         @Override
-        protected void onPostExecute(String s) {
+        protected void onPostExecute(String s) //'s' is the 'current' returned above
+        {
+            try {
+                new FormJSON(s); //Forms the JSON according to the URL Provided
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             super.onPostExecute(s);
         }
     }
