@@ -7,29 +7,76 @@ public class Credentials {
      **/
 
     //---BaseURL and FinalExtension---
-    String baseURL ="https://api.covid19india.org/";
-    String finalExtension = ".json";
+    static String baseURL ="https://api.covid19india.org/";
+    static String finalExtension = ".json";
     //--------------------------------
 
 
     //---Extension URLs---
-    String rawDataExtension = "raw_data";
-    String nationalLevelExtension = "data";
+    static String rawDataExtension = "raw_data";
+    static String nationalLevelExtension = "data";
     //---------------------
 
 
     //---State Level Data---
-    String stateDistrictWiseExtension =  "state_district_wise";
-    String stateDailyChangeExtension = "states_daily";
-    String stateTestingDataExtension = "state_test_data";
+    static String stateDistrictWiseExtension =  "state_district_wise";
+    static String stateDailyChangeExtension = "states_daily";
+    static String stateTestingDataExtension = "state_test_data";
     //----------------------
 
 
     //---National Level Data---
-    String latestDataExtension = "data";
-    String specificDateExtension = "data-"; //Add "YYYY-MM-DD" after this
-    String populationExtension = "misc";
+    static String latestDataExtension = "data";
+    static String specificDateExtension = "data-"; //Add "YYYY-MM-DD" after this
+    static String populationExtension = "misc";
     //-------------------------
+
+
+    //---Getters---
+
+    public static String getBaseURL() {
+        return baseURL;
+    }
+
+    public static String getFinalExtension() {
+        return finalExtension;
+    }
+
+    public static String getRawDataExtension() {
+        return rawDataExtension;
+    }
+
+    public static String getNationalLevelExtension() {
+        return nationalLevelExtension;
+    }
+
+    public static String getStateDistrictWiseExtension() {
+        return stateDistrictWiseExtension;
+    }
+
+    public static String getStateDailyChangeExtension() {
+        return stateDailyChangeExtension;
+    }
+
+    public static String getStateTestingDataExtension() {
+        return stateTestingDataExtension;
+    }
+
+    public static String getLatestDataExtension() {
+        return latestDataExtension;
+    }
+
+    public static String getSpecificDateExtension() {
+        return specificDateExtension;
+    }
+
+    public static String getPopulationExtension() {
+        return populationExtension;
+    }
+
+    //-------------
+
+
 
 }
     /*---Documentation of API from Owners Github Repo---
